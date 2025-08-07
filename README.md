@@ -48,7 +48,7 @@ Add this to your Claude Desktop configuration:
 {
   "project-finder": {
     "command": "node",
-    "args": ["/home/edgar/github/mcp-project-finder/server.js"],
+    "args": ["/Users/bard/Code/mcp-project-finder/server.js"],
     "env": {}
   }
 }
@@ -57,9 +57,9 @@ Add this to your Claude Desktop configuration:
 {
   "project-finder": {
     "command": "node",
-    "args": ["/home/edgar/github/mcp-project-finder/server.js"],
+    "args": ["/Users/bard/Code/mcp-project-finder/server.js"],
     "env": {
-      "CODE_PATH": "/home/edgar/code"
+      "CODE_PATH": "/Users/bard/Projects"
     }
   }
 }
@@ -79,7 +79,7 @@ The tool is optimized for speed - it directly lists the configured code director
 ## Default Behavior
 
 When no `CODE_PATH` is specified, the tool automatically uses the parent directory of where it's installed. For example:
-- Tool installed at: `/home/edgar/github/mcp-project-finder/`
-- Default search path: `/home/edgar/github/`
+- Tool installed at: `/Users/bard/Code/mcp-project-finder/`
+- Default search path: `/Users/bard/Code/`
 
 This makes it easy to set up without any configuration while still being flexible for different environments.
