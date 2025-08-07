@@ -1,11 +1,12 @@
 {
   "name": "mcp-project-finder",
-  "version": "1.0.0",
-  "description": "Fast project discovery and navigation for /Users/bard/Code",
+  "version": "1.1.0",
+  "description": "Fast project discovery and navigation tool with configurable code directory",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "# No build step required"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",

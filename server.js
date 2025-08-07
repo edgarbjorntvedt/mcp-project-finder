@@ -8,18 +8,25 @@ import fs from 'fs/promises';
 import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const execAsync = promisify(exec);
 
-const PROJECT_BASE = '/Users/bard/Code';
+// Get the directory where this script is located
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Use CODE_PATH environment variable if set, otherwise default to parent of this project
+const PROJECT_BASE = process.env.CODE_PATH || path.dirname(__dirname);
 
 class ProjectFinderServer {
   constructor() {
     this.server = new Server(
       {
         name: 'mcp-project-finder',
-        version: '1.0.0',
-        description: 'Fast project discovery and navigation for /Users/bard/Code'
+        version: '1.1.0',
+        description: `Fast project discovery and navigation for ${PROJECT_BASE}`
       },
       {
         capabilities: {
@@ -36,7 +43,7 @@ class ProjectFinderServer {
       tools: [
         {
           name: 'list_projects',
-          description: 'List all projects in /Users/bard/Code with optional filtering',
+          description: `List all projects in ${PROJECT_BASE} with optional filtering`,
           inputSchema: {
             type: 'object',
             properties: {
@@ -138,7 +145,7 @@ class ProjectFinderServer {
       helpText = `📁 Project Finder Help
 ======================
 
-Fast project discovery and navigation for /Users/bard/Code directory.
+Fast project discovery and navigation for ${PROJECT_BASE} directory.
 
 Available commands:
 
@@ -163,7 +170,7 @@ Use 'project_finder_help' with a specific command for detailed information.`;
         case 'list_projects':
           helpText = `📋 list_projects - List all projects
 
-Lists all directories in /Users/bard/Code, excluding hidden folders.
+Lists all directories in ${PROJECT_BASE}, excluding hidden folders.
 
 Parameters:
 - filter: Filter pattern for project names (optional)
